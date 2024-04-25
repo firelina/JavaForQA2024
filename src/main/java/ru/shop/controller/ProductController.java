@@ -2,7 +2,7 @@ package ru.shop.controller;
 
 import org.springframework.web.bind.annotation.*;
 import ru.shop.model.Product;
-import ru.shop.repository.ProductRepository;
+import ru.shop.model.ProductType;
 import ru.shop.service.ProductService;
 
 import java.util.List;
@@ -11,10 +11,11 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/product")
 public class ProductController {
+    private final ProductService productService;
 
-    ProductService productService = new ProductService(
-            new ProductRepository()
-    );
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @GetMapping
     public List<Product> getAll() {
@@ -29,6 +30,10 @@ public class ProductController {
     @GetMapping("/{id}")
     public Product getById(@PathVariable UUID id) {
         return productService.getById(id);
+    }
+    @GetMapping("/type/{productType}")
+    public List<Product> getByProductType(@PathVariable ProductType productType) {
+        return productService.findByProductType(productType);
     }
 
 }

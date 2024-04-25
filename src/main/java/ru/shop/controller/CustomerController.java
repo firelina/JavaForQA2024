@@ -2,7 +2,6 @@ package ru.shop.controller;
 
 import org.springframework.web.bind.annotation.*;
 import ru.shop.model.Customer;
-import ru.shop.repository.CustomerRepository;
 import ru.shop.service.CustomerService;
 
 import java.util.List;
@@ -11,10 +10,11 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
+    private final CustomerService customerService;
 
-    CustomerService customerService = new CustomerService(
-            new CustomerRepository()
-    );
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
 
     @GetMapping
     public List<Customer> getAll() {
