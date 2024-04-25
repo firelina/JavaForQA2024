@@ -8,6 +8,10 @@ public class Customer implements Domain {
     private String phone;
     private Long age;
 
+    public Customer() {
+
+    }
+
     @Override
     public String toString() {
         return "Customer{" +

@@ -1,12 +1,13 @@
 package ru.shop.repository;
 
+import org.springframework.stereotype.Repository;
 import ru.shop.domain.Customer;
 import ru.shop.domain.Domain;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Repository
 public class CustomerRepository implements CommonRepository{
     public CustomerRepository() {
         this.customers = new ArrayList<>();

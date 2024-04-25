@@ -6,8 +6,12 @@ public class Order implements Domain {
     private UUID id;
     private UUID customerId;
     private UUID productId;
-    private Long count;
+    private Long cost;
     private Long amount;
+
+    public Order() {
+
+    }
 
     @Override
     public String toString() {
@@ -15,7 +19,7 @@ public class Order implements Domain {
                 "id=" + id +
                 ", customerId=" + customerId +
                 ", productId=" + productId +
-                ", cost=" + count +
+                ", cost=" + cost +
                 ", amount=" + amount +
                 '}';
     }
@@ -24,7 +28,7 @@ public class Order implements Domain {
         this.id = id;
         this.customerId = customerId;
         this.productId = productId;
-        this.count = count;
+        this.cost = count;
         this.amount = amount;
     }
 
@@ -40,8 +44,8 @@ public class Order implements Domain {
         return productId;
     }
 
-    public Long getCount() {
-        return count;
+    public Long getCost() {
+        return cost;
     }
 
     public Long getAmount() {

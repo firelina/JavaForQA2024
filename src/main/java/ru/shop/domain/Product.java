@@ -2,6 +2,7 @@ package ru.shop.domain;
 
 import java.util.UUID;
 
+
 public class Product implements Domain{
     private UUID id;
     private String name;
@@ -14,6 +15,11 @@ public class Product implements Domain{
         this.cost = cost;
         this.productType = productType;
     }
+
+    public Product() {
+
+    }
+
 
     @Override
     public String toString() {
