@@ -34,8 +34,8 @@ public class OrderController {
     }
     @PostMapping
     public void save(UUID productId, UUID customerId, Long count) throws EntityNotFoundException, BadOrderCountException {
-        Product product = productService.findById(productId).get();
-        Customer customer = customerService.findById(customerId).get();
+        Product product = productService.findById(productId).orElse(null);
+        Customer customer = customerService.findById(customerId).orElse(null);
         orderService.add(customer, product, count);
     }
     @GetMapping("/{id}") public Optional<Order> getById(@PathVariable UUID id) throws EntityNotFoundException {

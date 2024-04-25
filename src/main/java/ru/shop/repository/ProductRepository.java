@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 @Repository
 public class ProductRepository implements CommonRepository{
-    private ArrayList<Product> products;
+    private final ArrayList<Product> products;
     public ProductRepository() {
         this.products = new ArrayList<>();
     }

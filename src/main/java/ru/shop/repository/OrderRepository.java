@@ -21,6 +21,6 @@ public class OrderRepository implements CommonRepository{
 
     @Override
     public List<Domain> findAll() {
-        return orders.stream().map(o-> (Order)o).collect(Collectors.toList());
+        return new ArrayList<>(orders);
     }
 }

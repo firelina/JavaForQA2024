@@ -37,14 +37,13 @@ public class CustomerController {
     }
     @GetMapping("/customer/{customerId}/orders")
     public List<Order> getByCustomer(UUID customerId) throws EntityNotFoundException {
-        Customer cust = customerService.findById(customerId).get();
+        Customer cust = customerService.findById(customerId).orElse(null);
         return orderService.findByCustomer(cust);
     }
     @GetMapping("/customer/{customerId}/total")
     public long getCustomerTotal(UUID customerId) throws EntityNotFoundException {
-        Optional<Customer> customer = customerService.findById(customerId);
-        Customer cust = customer.get();
-        return orderService.getTotalCustomerAmount(cust);
+        Customer customer = customerService.findById(customerId).orElse(null);
+        return orderService.getTotalCustomerAmount(customer);
     }
 
 

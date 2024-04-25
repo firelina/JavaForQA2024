@@ -30,12 +30,11 @@ public class ProductService implements CommonService {
         return productRepository.findAll();
     }
     public Optional<Product>  findById(UUID id) throws EntityNotFoundException {
-        List<Product> products = productRepository.findAll().stream().map(d -> (Product)d).collect(Collectors.toList());
-
+        List<Product> products = productRepository.findAll().stream().map(d -> (Product) d).toList();
         return Optional.of(products.stream().filter(p -> p.getId().equals(id)).findFirst().orElseThrow(()-> new EntityNotFoundException("product not found")));
     }
     public List<Product> findByProductType(ProductType productType) {
-        List<Product> products = productRepository.findAll().stream().map(d -> (Product)d).collect(Collectors.toList());
+        List<Product> products = productRepository.findAll().stream().map(d -> (Product) d).toList();
         return products.stream().filter(p -> p.getProductType() == productType).collect(Collectors.toList());
     }
 

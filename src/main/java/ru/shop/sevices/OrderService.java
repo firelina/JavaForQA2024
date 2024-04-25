@@ -44,7 +44,7 @@ public class OrderService implements CommonService{
         return orders.stream().filter(o -> o.getCustomerId() == customer.getId()).collect(Collectors.toList());
     }
     public Long getTotalCustomerAmount(Customer customer) {
-        return this.findByCustomer(customer).stream().map(o -> o.getAmount()).mapToLong(v -> v).sum();
+        return this.findByCustomer(customer).stream().map(Order::getAmount).mapToLong(v -> v).sum();
     }
     public Optional<Order> findById(UUID id) throws EntityNotFoundException {
         List<Order> orders = this.findAll().stream().map(d -> (Order) d).toList();
